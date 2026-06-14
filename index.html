@@ -1,0 +1,1820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tairac Digital Solution</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --orange: #FF6B00;
+      --orange-light: #FF8C3A;
+      --blue: #0A3D8F;
+      --blue-light: #1A6BC4;
+      --dark: #0D1117;
+      --dark2: #161B22;
+      --glass: rgba(255,255,255,0.05);
+      --glass-border: rgba(255,255,255,0.1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--dark);
+      color: #e0e0e0;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, .navbar-brand {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* ========== NAVBAR ========== */
+    .navbar {
+      background: rgba(13, 17, 23, 0.85) !important;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--glass-border);
+      padding: 14px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .navbar-brand {
+      font-weight: 800;
+      font-size: 1.4rem;
+      background: linear-gradient(90deg, var(--orange), var(--blue-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .navbar-nav .nav-link {
+      color: #ccc !important;
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 8px 14px !important;
+      border-radius: 8px;
+      transition: all 0.25s ease;
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: var(--orange) !important;
+      background: rgba(255,107,0,0.1);
+    }
+
+    .navbar-nav .dropdown-menu {
+      background: var(--dark2);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 8px;
+    }
+
+    .navbar-nav .dropdown-item {
+      color: #ccc;
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-size: 0.88rem;
+      transition: all 0.2s;
+    }
+
+    .navbar-nav .dropdown-item:hover {
+      background: rgba(255,107,0,0.1);
+      color: var(--orange);
+    }
+
+    .btn-login {
+      border: 1.5px solid var(--blue-light);
+      color: var(--blue-light);
+      background: transparent;
+      border-radius: 25px;
+      padding: 7px 20px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .btn-login:hover {
+      background: var(--blue-light);
+      color: #fff;
+    }
+
+    .btn-signup {
+      background: linear-gradient(135deg, var(--orange), var(--orange-light));
+      color: #fff;
+      border: none;
+      border-radius: 25px;
+      padding: 7px 20px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255,107,0,0.35);
+    }
+
+    .btn-signup:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255,107,0,0.5);
+      color: #fff;
+    }
+
+    .navbar-toggler {
+      border: 1px solid var(--glass-border);
+      padding: 6px 10px;
+    }
+
+    .navbar-toggler-icon {
+      filter: invert(1);
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0D1117 0%, #0A1628 50%, #0D1117 100%);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 100px 0 60px;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,107,0,0.12) 0%, transparent 70%);
+      top: -200px;
+      right: -150px;
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(10,61,143,0.2) 0%, transparent 70%);
+      bottom: -100px;
+      left: -100px;
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, rgba(255,107,0,0.15), rgba(10,61,143,0.15));
+      border: 1px solid rgba(255,107,0,0.3);
+      border-radius: 30px;
+      padding: 8px 18px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--orange-light);
+      margin-bottom: 24px;
+      animation: fadeInDown 0.8s ease forwards;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 900;
+      line-height: 1.15;
+      color: #fff;
+      animation: fadeInUp 0.9s ease 0.2s both;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(90deg, var(--orange), var(--blue-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: #aaa;
+      max-width: 520px;
+      line-height: 1.8;
+      animation: fadeInUp 0.9s ease 0.35s both;
+    }
+
+    .hero-cta {
+      animation: fadeInUp 0.9s ease 0.5s both;
+    }
+
+    .btn-primary-custom {
+      background: linear-gradient(135deg, var(--orange), var(--orange-light));
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      padding: 14px 34px;
+      font-size: 1rem;
+      font-weight: 700;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 25px rgba(255,107,0,0.4);
+    }
+
+    .btn-primary-custom:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(255,107,0,0.55);
+      color: #fff;
+    }
+
+    .btn-secondary-custom {
+      background: transparent;
+      color: #fff;
+      border: 1.5px solid rgba(255,255,255,0.2);
+      border-radius: 30px;
+      padding: 14px 34px;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .btn-secondary-custom:hover {
+      border-color: var(--blue-light);
+      color: var(--blue-light);
+      transform: translateY(-3px);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      animation: fadeInUp 0.9s ease 0.65s both;
+    }
+
+    .stat-card {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 16px 24px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s;
+    }
+
+    .stat-card:hover { transform: translateY(-5px); }
+
+    .stat-card .number {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, var(--orange), var(--blue-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-card .label {
+      font-size: 0.78rem;
+      color: #888;
+      font-weight: 500;
+      margin-top: 2px;
+    }
+
+    .hero-visual {
+      position: relative;
+      animation: floatUp 1s ease 0.3s both;
+    }
+
+    .hero-card-main {
+      background: linear-gradient(135deg, rgba(10,61,143,0.4), rgba(26,107,196,0.2));
+      border: 1px solid rgba(26,107,196,0.3);
+      border-radius: 24px;
+      padding: 36px;
+      backdrop-filter: blur(20px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card-main::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--orange), var(--blue-light));
+    }
+
+    .hero-card-main h3 {
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .service-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 0.82rem;
+      color: #ddd;
+      margin: 4px;
+      transition: all 0.3s;
+    }
+
+    .service-chip:hover {
+      background: rgba(255,107,0,0.15);
+      border-color: var(--orange);
+      color: var(--orange-light);
+    }
+
+    .floating-badge {
+      position: absolute;
+      background: linear-gradient(135deg, var(--orange), var(--orange-light));
+      color: #fff;
+      border-radius: 14px;
+      padding: 10px 16px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      box-shadow: 0 8px 25px rgba(255,107,0,0.4);
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .floating-badge.top-right {
+      top: -15px;
+      right: -15px;
+    }
+
+    .floating-badge.bottom-left {
+      bottom: -15px;
+      left: -15px;
+      background: linear-gradient(135deg, var(--blue), var(--blue-light));
+      box-shadow: 0 8px 25px rgba(10,61,143,0.4);
+      animation-delay: 1.5s;
+    }
+
+    /* ========== SECTION STYLES ========== */
+    section { padding: 90px 0; }
+
+    .section-eyebrow {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--orange);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.25;
+    }
+
+    .section-title span {
+      background: linear-gradient(90deg, var(--orange), var(--blue-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .section-subtitle {
+      color: #888;
+      font-size: 1rem;
+      line-height: 1.8;
+      max-width: 540px;
+    }
+
+    /* ========== SERVICES ========== */
+    #services { background: var(--dark2); }
+
+    .service-card {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 32px 28px;
+      height: 100%;
+      transition: all 0.35s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--orange), var(--blue-light));
+      transform: scaleX(0);
+      transition: transform 0.35s ease;
+    }
+
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(255,107,0,0.3);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    }
+
+    .service-icon {
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, rgba(255,107,0,0.15), rgba(10,61,143,0.15));
+      border: 1px solid rgba(255,107,0,0.2);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: var(--orange);
+      margin-bottom: 20px;
+      transition: all 0.3s;
+    }
+
+    .service-card:hover .service-icon {
+      background: linear-gradient(135deg, var(--orange), var(--orange-light));
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .service-card h5 {
+      color: #fff;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      color: #888;
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    /* ========== HOW IT WORKS ========== */
+    #process { background: var(--dark); }
+
+    .process-step {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 24px;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 18px;
+      margin-bottom: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .process-step:hover {
+      border-color: rgba(255,107,0,0.3);
+      transform: translateX(8px);
+    }
+
+    .step-number {
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--orange), var(--orange-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: #fff;
+    }
+
+    .step-number.blue {
+      background: linear-gradient(135deg, var(--blue), var(--blue-light));
+    }
+
+    .process-step h6 {
+      color: #fff;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .process-step p {
+      color: #888;
+      font-size: 0.88rem;
+      margin: 0;
+    }
+
+    /* ========== WHY US ========== */
+    #why { background: var(--dark2); }
+
+    .why-card {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 28px;
+      text-align: center;
+      transition: all 0.3s ease;
+      height: 100%;
+    }
+
+    .why-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(26,107,196,0.4);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    }
+
+    .why-icon {
+      font-size: 2.2rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .why-card h6 {
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .why-card p {
+      color: #888;
+      font-size: 0.87rem;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* ========== PACKAGES ========== */
+    #packages { background: var(--dark); }
+
+    .package-card {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 36px 28px;
+      height: 100%;
+      transition: all 0.35s ease;
+      position: relative;
+    }
+
+    .package-card.featured {
+      background: linear-gradient(135deg, rgba(255,107,0,0.12), rgba(10,61,143,0.12));
+      border-color: rgba(255,107,0,0.4);
+      transform: scale(1.04);
+    }
+
+    .package-card:hover {
+      transform: translateY(-8px) scale(1.01);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+    }
+
+    .package-card.featured:hover {
+      transform: translateY(-8px) scale(1.05);
+    }
+
+    .package-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--orange), var(--orange-light));
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 5px 16px;
+      border-radius: 20px;
+      white-space: nowrap;
+      box-shadow: 0 4px 15px rgba(255,107,0,0.4);
+    }
+
+    .package-tier {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--orange);
+      margin-bottom: 8px;
+    }
+
+    .package-card h4 {
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+    }
+
+    .package-card .desc {
+      color: #888;
+      font-size: 0.88rem;
+      margin-bottom: 24px;
+    }
+
+    .package-feature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 0.88rem;
+      color: #ccc;
+    }
+
+    .package-feature i {
+      color: var(--orange);
+      font-size: 0.9rem;
+    }
+
+    /* ========== TESTIMONIALS ========== */
+    #testimonials { background: var(--dark2); }
+
+    .testimonial-card {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 28px;
+      height: 100%;
+      transition: all 0.3s;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(255,107,0,0.2);
+    }
+
+    .stars { color: #FFA500; font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 14px; }
+
+    .testimonial-card p {
+      color: #bbb;
+      font-size: 0.9rem;
+      line-height: 1.75;
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .author-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: #fff;
+    }
+
+    .testimonial-author h6 {
+      color: #fff;
+      font-weight: 700;
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    .testimonial-author small {
+      color: #888;
+      font-size: 0.78rem;
+    }
+
+    /* ========== CAC INFO ========== */
+    #cac-info { background: var(--dark); }
+
+    .info-card {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 18px;
+      padding: 24px;
+      height: 100%;
+      transition: all 0.3s;
+    }
+
+    .info-card:hover {
+      border-color: rgba(26,107,196,0.3);
+      transform: translateY(-4px);
+    }
+
+    .info-card h6 {
+      color: #fff;
+      font-weight: 700;
+      margin: 12px 0 8px;
+    }
+
+    .info-card p {
+      color: #888;
+      font-size: 0.87rem;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* ========== FAQ ========== */
+    #faq { background: var(--dark2); }
+
+    .accordion-item {
+      background: var(--glass) !important;
+      border: 1px solid var(--glass-border) !important;
+      border-radius: 14px !important;
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+
+    .accordion-button {
+      background: transparent !important;
+      color: #fff !important;
+      font-weight: 600;
+      font-size: 0.95rem;
+      box-shadow: none !important;
+      padding: 18px 22px;
+    }
+
+    .accordion-button::after {
+      filter: invert(1) brightness(0.8);
+    }
+
+    .accordion-button:not(.collapsed) {
+      color: var(--orange) !important;
+    }
+
+    .accordion-body {
+      color: #888;
+      font-size: 0.9rem;
+      line-height: 1.8;
+      padding: 0 22px 18px;
+    }
+
+    /* ========== CTA BANNER ========== */
+    .cta-section {
+      background: linear-gradient(135deg, rgba(255,107,0,0.15) 0%, rgba(10,61,143,0.2) 100%);
+      border-top: 1px solid rgba(255,107,0,0.2);
+      border-bottom: 1px solid rgba(10,61,143,0.2);
+      padding: 80px 0;
+    }
+
+    .cta-section h2 {
+      color: #fff;
+      font-weight: 800;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: var(--dark2);
+      border-top: 1px solid var(--glass-border);
+      padding: 60px 0 30px;
+    }
+
+    .footer-brand {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, var(--orange), var(--blue-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .footer-desc {
+      color: #666;
+      font-size: 0.88rem;
+      line-height: 1.7;
+      margin-top: 10px;
+    }
+
+    .footer-heading {
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+    }
+
+    .footer-link {
+      display: block;
+      color: #666;
+      font-size: 0.88rem;
+      text-decoration: none;
+      margin-bottom: 8px;
+      transition: color 0.25s;
+    }
+
+    .footer-link:hover { color: var(--orange); }
+
+    .footer-contact {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #666;
+      font-size: 0.88rem;
+      margin-bottom: 10px;
+    }
+
+    .footer-contact i { color: var(--orange); }
+
+    .social-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #888;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: all 0.25s;
+      margin-right: 6px;
+    }
+
+    .social-btn:hover {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: #fff;
+    }
+
+    .footer-divider {
+      border-color: rgba(255,255,255,0.06);
+      margin: 30px 0 20px;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-bottom p {
+      color: #555;
+      font-size: 0.82rem;
+      margin: 0;
+    }
+
+    /* ========== ANIMATIONS ========== */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    @keyframes floatUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========== UTILITY ========== */
+    .gradient-text {
+      background: linear-gradient(90deg, var(--orange), var(--blue-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .divider-line {
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--orange), var(--blue-light));
+      border-radius: 4px;
+      margin: 16px 0 24px;
+    }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--dark); }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(var(--orange), var(--blue));
+      border-radius: 10px;
+    }
+
+    @media (max-width: 767px) {
+      .hero { padding: 80px 0 50px; }
+      .hero-stats { gap: 14px; }
+      .stat-card { padding: 12px 16px; }
+      .floating-badge { display: none; }
+      .package-card.featured { transform: none; }
+    }
+    
+    
+    
+    /* ===== LIGHT MODE ===== */
+body.light-mode {
+  background: #f0f4f8;
+  color: #1a1a2e;
+}
+
+body.light-mode .navbar {
+  background: rgba(255,255,255,0.92) !important;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+body.light-mode .navbar-nav .nav-link {
+  color: #333 !important;
+}
+
+body.light-mode .dropdown-menu {
+  background: #ffffff !important;
+  border: 1px solid rgba(0,0,0,0.1) !important;
+}
+
+body.light-mode .dropdown-item {
+  color: #333 !important;
+}
+
+body.light-mode .dropdown-item:hover {
+  background: rgba(255,107,0,0.08) !important;
+}
+
+body.light-mode .hero {
+  background: linear-gradient(135deg, #e8f0fe 0%, #fff3e8 50%, #e8f0fe 100%);
+}
+
+body.light-mode .hero h1 { color: #0D1117; }
+body.light-mode .hero p { color: #555; }
+
+body.light-mode .stat-card,
+body.light-mode .service-card,
+body.light-mode .process-step,
+body.light-mode .why-card,
+body.light-mode .package-card,
+body.light-mode .testimonial-card,
+body.light-mode .info-card,
+body.light-mode .hero-card-main {
+  background: #ffffff;
+  border-color: rgba(0,0,0,0.08);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+}
+
+body.light-mode #services,
+body.light-mode #why,
+body.light-mode #faq,
+body.light-mode #testimonials {
+  background: #e8eef5;
+}
+
+body.light-mode #process,
+body.light-mode #cac-info,
+body.light-mode #packages {
+  background: #f0f4f8;
+}
+
+body.light-mode .section-title { color: #0D1117; }
+body.light-mode .service-card h5,
+body.light-mode .process-step h6,
+body.light-mode .why-card h6,
+body.light-mode .package-card h4,
+body.light-mode .info-card h6,
+body.light-mode .testimonial-card p,
+body.light-mode .footer-heading { color: #0D1117; }
+
+body.light-mode .service-card p,
+body.light-mode .section-subtitle,
+body.light-mode .process-step p,
+body.light-mode .why-card p,
+body.light-mode .info-card p,
+body.light-mode .package-card .desc,
+body.light-mode .package-feature { color: #555; }
+
+body.light-mode .hero-badge {
+  background: linear-gradient(135deg, rgba(255,107,0,0.1), rgba(10,61,143,0.1));
+}
+
+body.light-mode .accordion-item {
+  background: #ffffff !important;
+  border-color: rgba(0,0,0,0.08) !important;
+}
+
+body.light-mode .accordion-button { color: #0D1117 !important; }
+
+body.light-mode .accordion-body { color: #555; }
+
+body.light-mode footer {
+  background: #e0e8f0;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+body.light-mode .footer-desc,
+body.light-mode .footer-link,
+body.light-mode .footer-contact,
+body.light-mode .footer-bottom p { color: #555; }
+
+body.light-mode .social-btn {
+  background: #fff;
+  border-color: rgba(0,0,0,0.1);
+  color: #555;
+}
+
+body.light-mode .footer-divider { border-color: rgba(0,0,0,0.1); }
+
+body.light-mode ::-webkit-scrollbar-track { background: #f0f4f8; }
+
+body.light-mode .cta-section {
+  background: linear-gradient(135deg, rgba(255,107,0,0.08), rgba(10,61,143,0.08));
+}
+
+body.light-mode .service-chip {
+  background: rgba(0,0,0,0.05);
+  border-color: rgba(0,0,0,0.1);
+  color: #444;
+}
+
+body.light-mode .hero-card-main h3 { color: #0D1117; }
+
+body.light-mode .hero-card-main .d-flex div div:first-child { color: #0D1117 !important; }
+body.light-mode .hero-card-main .d-flex div div:last-child { color: #555 !important; }
+
+body.light-mode .hero-card-main > div:last-child {
+  background: rgba(255,107,0,0.06) !important;
+  border-color: rgba(255,107,0,0.15) !important;
+}
+
+body.light-mode .stat-card .label { color: #666; }
+
+body.light-mode .testimonial-card p { color: #444; font-style: italic; }
+body.light-mode .testimonial-author h6 { color: #0D1117; }
+body.light-mode .testimonial-author small { color: #777; }
+
+body.light-mode .package-feature { color: #444; border-bottom-color: rgba(0,0,0,0.06); }
+
+body.light-mode .process-step { background: #ffffff; border-color: rgba(0,0,0,0.08); }
+
+body.light-mode .accordion-button:not(.collapsed) { color: var(--orange) !important; }
+
+body.light-mode [style*="color:#fff"] { color: #0D1117 !important; }
+body.light-mode [style*="color: #fff"] { color: #0D1117 !important; }
+body.light-mode [style*="color:#aaa"] { color: #555 !important; }
+body.light-mode [style*="color:#888"] { color: #666 !important; }
+body.light-mode [style*="color:#bbb"] { color: #444 !important; }
+body.light-mode [style*="color:#ccc"] { color: #333 !important; }
+body.light-mode [style*="color:#666"] { color: #555 !important; }
+
+body.light-mode .trust-bar-item { color: #555 !important; }
+
+/* Trust bar in light mode */
+body.light-mode div[style*="background: var(--dark2)"] {
+  background: #dde5f0 !important;
+  border-color: rgba(0,0,0,0.08) !important;
+}
+
+body.light-mode .cta-section h2 { color: #0D1117; }
+body.light-mode .cta-section p { color: #555 !important; }
+
+body.light-mode .btn-secondary-custom {
+  color: #333;
+  border-color: rgba(0,0,0,0.2);
+}
+
+body.light-mode .btn-secondary-custom:hover {
+  color: var(--blue);
+  border-color: var(--blue);
+}
+
+body.light-mode .navbar-toggler {
+  border-color: rgba(0,0,0,0.2);
+}
+
+body.light-mode .navbar-toggler-icon {
+  filter: invert(0);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280%2C0%2C0%2C0.7%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.btn-nav-auth {
+  border: 1.5px solid var(--blue-light);
+  color: var(--blue-light);
+  background: transparent;
+  border-radius: 25px;
+  padding: 8px 0;
+  font-size: 0.88rem;
+  font-weight: 600;
+  width: 100px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.btn-nav-auth:hover {
+  background: var(--blue-light);
+  color: #fff;
+}
+
+.btn-nav-filled {
+  background: linear-gradient(135deg, var(--orange), var(--orange-light));
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(255,107,0,0.35);
+}
+
+.btn-nav-filled:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255,107,0,0.5);
+  color: #fff;
+  background: linear-gradient(135deg, var(--orange), var(--orange-light));
+  border-color: transparent;
+}
+
+body.light-mode .btn-nav-auth {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+body.light-mode .btn-nav-auth:hover {
+  background: var(--blue);
+  color: #fff;
+}
+  </style>
+</head>
+<body>
+
+<!-- ========== NAVBAR ========== -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">Tairac Digital Solution</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav mx-auto gap-1">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Homepage</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">Meet the Founder</a></li>
+        <li class="nav-item"><a class="nav-link" href="partner.html">Partner With Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="why-trust.html">Why Trust Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="faqs.html">FAQs</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Learn More</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="about-cac.html"><i class="bi bi-info-circle me-2 text-warning"></i>What is CAC?</a></li>
+            <li><a class="dropdown-item" href="benefits.html"><i class="bi bi-check2-circle me-2 text-success"></i>Benefits of Registration</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0">
+  <a href="login.html" class="btn btn-nav-auth">Log In</a>
+  <a href="signup.html" class="btn btn-nav-auth btn-nav-filled">Sign Up</a>
+        <button id="themeToggle" onclick="toggleTheme()" class="btn social-btn ms-1" title="Toggle Theme">
+  <i class="bi bi-moon-fill" id="themeIcon"></i>
+</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ========== HERO ========== -->
+<section class="hero">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-6">
+        <div class="hero-badge">
+          <i class="bi bi-patch-check-fill"></i> CAC Approved Service Provider
+        </div>
+        <h1>
+          Register Your<br/>
+          <span>Business in Nigeria</span><br/>
+          The Smart Way
+        </h1>
+        <p class="mt-3">
+          Tairac Digital Solution helps individuals, entrepreneurs, churches, and NGOs register legally with Nigeria's Corporate Affairs Commission — fast, affordable, and 100% online.
+        </p>
+        <div class="hero-cta d-flex flex-wrap gap-3 mt-4">
+          <a href="i.html" class="btn btn-primary-custom">
+            <i class="bi bi-rocket-takeoff-fill me-2"></i>Get Started Now
+          </a>
+          <a href="#services" class="btn btn-secondary-custom">
+            <i class="bi bi-grid-1x2 me-2"></i>Our Services
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-card">
+            <div class="number">100+</div>
+            <div class="label">Businesses Registered</div>
+          </div>
+          <div class="stat-card">
+            <div class="number">5 Yrs</div>
+            <div class="label">Experience</div>
+          </div>
+          <div class="stat-card">
+            <div class="number">100%</div>
+            <div class="label">Online Process</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="hero-visual">
+          <div class="hero-card-main">
+            <div class="floating-badge top-right">
+              <i class="bi bi-shield-check me-1"></i> Verified ✓
+            </div>
+            <div class="floating-badge bottom-left">
+              <i class="bi bi-lightning-fill me-1"></i> 3–5 Day Delivery
+            </div>
+            <h3><i class="bi bi-building me-2" style="color: var(--orange)"></i>Our Registration Services</h3>
+            <div>
+              <span class="service-chip"><i class="bi bi-briefcase-fill"></i> Business Name</span>
+              <span class="service-chip"><i class="bi bi-building-fill"></i> LLC / Company</span>
+              <span class="service-chip"><i class="bi bi-people-fill"></i> NGO & Trustees</span>
+              <span class="service-chip"><i class="bi bi-arrow-repeat"></i> Annual Returns</span>
+              <span class="service-chip"><i class="bi bi-search"></i> Name Search</span>
+              <span class="service-chip"><i class="bi bi-file-earmark-text"></i> Post-Incorporation</span>
+              <span class="service-chip"><i class="bi bi-chat-dots"></i> Advisory & Legal</span>
+            </div>
+            <div class="mt-4 p-3 rounded-3" style="background: rgba(255,107,0,0.08); border: 1px solid rgba(255,107,0,0.15)">
+              <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-whatsapp text-success fs-5"></i>
+                <div>
+                  <div style="color:#fff; font-weight:600; font-size:0.88rem">Live WhatsApp Support</div>
+                  <div style="color:#888; font-size:0.78rem">+234 810 078 3189 — Available daily</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TRUST BAR ========== -->
+<div style="background: var(--dark2); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); padding: 20px 0;">
+  <div class="container">
+    <div class="d-flex flex-wrap justify-content-center align-items-center gap-4 text-center">
+      <div class="d-flex align-items-center gap-2" style="color:#888; font-size:0.88rem">
+        <i class="bi bi-shield-fill-check" style="color:var(--orange)"></i> CAC Certified
+      </div>
+      <div style="color: rgba(255,255,255,0.1)">|</div>
+      <div class="d-flex align-items-center gap-2" style="color:#888; font-size:0.88rem">
+        <i class="bi bi-lock-fill" style="color:var(--blue-light)"></i> Secure Payments via Paystack
+      </div>
+      <div style="color: rgba(255,255,255,0.1)">|</div>
+      <div class="d-flex align-items-center gap-2" style="color:#888; font-size:0.88rem">
+        <i class="bi bi-geo-alt-fill" style="color:var(--orange)"></i> Serve All 36 States
+      </div>
+      <div style="color: rgba(255,255,255,0.1)">|</div>
+      <div class="d-flex align-items-center gap-2" style="color:#888; font-size:0.88rem">
+        <i class="bi bi-whatsapp" style="color:#25D366"></i> WhatsApp Updates
+      </div>
+      <div style="color: rgba(255,255,255,0.1)">|</div>
+      <div class="d-flex align-items-center gap-2" style="color:#888; font-size:0.88rem">
+        <i class="bi bi-award-fill" style="color:var(--blue-light)"></i> 5 Years Track Record
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== SERVICES ========== -->
+<section id="services">
+  <div class="container">
+    <div class="text-center mb-5 reveal">
+      <span class="section-eyebrow">What We Offer</span>
+      <h2 class="section-title">Our <span>CAC Services</span></h2>
+      <div class="divider-line mx-auto"></div>
+      <p class="section-subtitle mx-auto">End-to-end registration services for every type of business entity in Nigeria. We handle the complexity so you don't have to.</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="service-card">
+          <div class="service-icon"><i class="bi bi-briefcase-fill"></i></div>
+          <h5>Business Name Registration</h5>
+          <p>Perfect for sole traders and freelancers. Get your business name officially registered with CAC in 3–5 working days.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="service-card">
+          <div class="service-icon"><i class="bi bi-building-fill"></i></div>
+          <h5>Limited Liability Company</h5>
+          <p>Register a full LLC with directors, share capital, and a unique corporate identity recognized by banks and institutions.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="service-card">
+          <div class="service-icon"><i class="bi bi-people-fill"></i></div>
+          <h5>NGO & Incorporated Trustees</h5>
+          <p>For churches, mosques, charities, and foundations. We handle all trustee documentation and CAC incorporation filings.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="service-card">
+          <div class="service-icon"><i class="bi bi-arrow-repeat"></i></div>
+          <h5>Annual Returns & Compliance</h5>
+          <p>Stay compliant with CAC annual return filings. Avoid penalties and keep your business in good standing year-round.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="service-card">
+          <div class="service-icon"><i class="bi bi-search"></i></div>
+          <h5>Name Search & Reservation</h5>
+          <p>Check if your preferred business name is available and reserve it before starting the full registration process.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="service-card">
+          <div class="service-icon"><i class="bi bi-chat-square-dots-fill"></i></div>
+          <h5>Advisory & Legal Support</h5>
+          <p>Get expert guidance on registration types, compliance requirements, and post-incorporation filings from our specialists.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== HOW IT WORKS ========== -->
+<section id="process">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-5 reveal">
+        <span class="section-eyebrow">Simple Process</span>
+        <h2 class="section-title">Register in <span>6 Easy Steps</span></h2>
+        <div class="divider-line"></div>
+        <p class="section-subtitle">No office visits. No complicated paperwork. Our fully remote process gets your business registered from anywhere in Nigeria.</p>
+        <a href="i.html" class="btn btn-primary-custom mt-4">
+          <i class="bi bi-rocket-takeoff-fill me-2"></i>Start Now
+        </a>
+      </div>
+      <div class="col-lg-7 reveal">
+        <div class="process-step">
+          <div class="step-number">1</div>
+          <div>
+            <h6>Choose Registration Type</h6>
+            <p>Select Business Name, LLC, or NGO/Trustees — whichever fits your entity.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-number blue">2</div>
+          <div>
+            <h6>Pick Your Package</h6>
+            <p>Choose from Silver, Gold, or Diamond packages based on your needs and budget.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-number">3</div>
+          <div>
+            <h6>Fill in Your Requirements</h6>
+            <p>Complete a simple online form with your business details, name ideas, and documents.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-number blue">4</div>
+          <div>
+            <h6>Make Secure Payment</h6>
+            <p>Pay securely via Paystack. All transactions are encrypted and fully protected.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-number">5</div>
+          <div>
+            <h6>Track via WhatsApp</h6>
+            <p>Get real-time updates on your registration progress directly on WhatsApp.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-number blue">6</div>
+          <div>
+            <h6>Receive Your Certificate</h6>
+            <p>Your official CAC certificate is delivered digitally — ready to use for banking, contracts, and more.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== WHY REGISTER ========== -->
+<section id="cac-info">
+  <div class="container">
+    <div class="text-center mb-5 reveal">
+      <span class="section-eyebrow">Why It Matters</span>
+      <h2 class="section-title">Benefits of <span>CAC Registration</span></h2>
+      <div class="divider-line mx-auto"></div>
+      <p class="section-subtitle mx-auto">Registering your business unlocks powerful advantages that protect your brand and accelerate your growth.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-sm-6 col-lg-3 reveal">
+        <div class="info-card text-center">
+          <i class="bi bi-bank2 fs-2" style="color:var(--orange)"></i>
+          <h6>Access to Banking</h6>
+          <p>Open a corporate bank account and access business loans and financial services only available to registered entities.</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3 reveal">
+        <div class="info-card text-center">
+          <i class="bi bi-shield-lock fs-2" style="color:var(--blue-light)"></i>
+          <h6>Brand Protection</h6>
+          <p>Legally protect your business name. No one else can operate under your registered name in Nigeria.</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3 reveal">
+        <div class="info-card text-center">
+          <i class="bi bi-trophy fs-2" style="color:var(--orange)"></i>
+          <h6>Grants & Contracts</h6>
+          <p>Qualify for government grants, tenders, and contracts that are exclusively available to registered businesses.</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3 reveal">
+        <div class="info-card text-center">
+          <i class="bi bi-star-fill fs-2" style="color:var(--blue-light)"></i>
+          <h6>Customer Trust</h6>
+          <p>Registered businesses are seen as credible and professional, helping you win more clients and investors.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== WHY CHOOSE US ========== -->
+<section id="why">
+  <div class="container">
+    <div class="text-center mb-5 reveal">
+      <span class="section-eyebrow">Why Choose Tairac</span>
+      <h2 class="section-title">The Tairac <span>Advantage</span></h2>
+      <div class="divider-line mx-auto"></div>
+    </div>
+    <div class="row g-4">
+      <div class="col-sm-6 col-lg-3 reveal">
+        <div class="why-card">
+          <span class="why-icon">👤</span>
+          <h6>Real Identity</h6>
+          <p>Founder Fasaanu Taiwo is available on video call and voice verification. No anonymous agents.</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3 reveal">
+        <div class="why-card">
+          <span class="why-icon">⚡</span>
+          <h6>Fast Delivery</h6>
+          <p>Business Name in 3–5 days. Company/NGO in 7–14 days. We track every step and keep you updated.</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3 reveal">
+        <div class="why-card">
+          <span class="why-icon">🔒</span>
+          <h6>Transparent Pricing</h6>
+          <p>No hidden charges. What you see is what you pay. Receipts and certificates guaranteed.</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3 reveal">
+        <div class="why-card">
+          <span class="why-icon">🌍</span>
+          <h6>Nationwide Coverage</h6>
+          <p>Serving clients in all 36 states. 100% remote process — no physical presence needed.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PACKAGES ========== -->
+<section id="packages" style="background: var(--dark);">
+  <div class="container">
+    <div class="text-center mb-5 reveal">
+      <span class="section-eyebrow">Pricing</span>
+      <h2 class="section-title">Choose Your <span>Package</span></h2>
+      <div class="divider-line mx-auto"></div>
+      <p class="section-subtitle mx-auto">Flexible options for every budget. All packages include CAC filing and WhatsApp support.</p>
+    </div>
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-4 reveal">
+        <div class="package-card">
+          <div class="package-tier">Silver</div>
+          <h4>Starter</h4>
+          <p class="desc">Ideal for individuals and small business owners just starting out.</p>
+          <div class="package-feature"><i class="bi bi-check-circle-fill"></i> Name Search & Reservation</div>
+          <div class="package-feature"><i class="bi bi-check-circle-fill"></i> Business Name Registration</div>
+          <div class="package-feature"><i class="bi bi-check-circle-fill"></i> Digital Certificate</div>
+          <div class="package-feature"><i class="bi bi-check-circle-fill"></i> WhatsApp Support</div>
+          <a href="i.html" class="btn btn-secondary-custom w-100 mt-4">Get Silver</a>
+        </div>
+      </div>
+      <div class="col-md-4 reveal">
+        <div class="package-card featured">
+          <div class="package-badge">⭐ Most Popular</div>
+          <div class="package-tier">Gold</div>
+          <h4>Professional</h4>
+          <p class="desc">For entrepreneurs and growing businesses that need full incorporation.</p>
+          <div class="package-feature"><i class="bi bi-check-circle-fill"></i> Everything in Silver</div>
+          <div class="package-feature"><i class="bi bi-check-circle-fill"></i> LLC / Company Registration</div>
+          <div class="package-feature"><i class="bi bi-check-circle-fill"></i> Company Seal & Documents</div>
+          <div class="package-feature"><i class="bi bi-check-circle-fill"></i> Post-Incorporation Filings</div>
+          <div class="package-feature"><i class="bi bi-check-circle-fill"></i> Priority Support</div>
+          <a href="i.html" class="btn btn-primary-custom w-100 mt-4">Get Gold</a>
+        </div>
+      </div>
+      <div class="col-md-4 reveal">
+        <div class="package-card">
+          <div class="package-tier">Diamond</div>
+          <h4>Premium</h4>
+          <p class="desc">For NGOs, churches, foundations, and complex entity registrations.</p>
+          <div class="package-feature"><i class="bi bi-check-circle-fill"></i> Everything in Gold</div>
+          <div class="package-feature"><i class="bi bi-check-circle-fill"></i> NGO / Trustees Registration</div>
+          <div class="package-feature"><i class="bi bi-check-circle-fill"></i> Annual Returns Filing</div>
+          <div class="package-feature"><i class="bi bi-check-circle-fill"></i> Legal Advisory Session</div>
+          <div class="package-feature"><i class="bi bi-check-circle-fill"></i> Dedicated Account Manager</div>
+          <a href="i.html" class="btn btn-secondary-custom w-100 mt-4">Get Diamond</a>
+        </div>
+      </div>
+    </div>
+    <p class="text-center mt-4" style="color:#666; font-size:0.88rem">
+      <i class="bi bi-info-circle me-1" style="color:var(--orange)"></i>
+      Contact us via WhatsApp for exact pricing: <a href="https://wa.me/2348100783189" style="color:var(--orange)">+234 810 078 3189</a>
+    </p>
+  </div>
+</section>
+
+<!-- ========== TESTIMONIALS ========== -->
+<section id="testimonials">
+  <div class="container">
+    <div class="text-center mb-5 reveal">
+      <span class="section-eyebrow">What Clients Say</span>
+      <h2 class="section-title">Real <span>Success Stories</span></h2>
+      <div class="divider-line mx-auto"></div>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>"Tairac made it so easy to register my business. Taiwo was very patient and delivered my CAC certificate in 5 days. Highly recommend!"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar" style="background: linear-gradient(135deg, var(--orange), var(--orange-light))">B</div>
+            <div>
+              <h6>Blessing A.</h6>
+              <small>Lagos — Business Name Registration</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>"Our church NGO was properly registered and branded by Tairac. Very professional work and constant updates throughout the process!"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar" style="background: linear-gradient(135deg, var(--blue), var(--blue-light))">P</div>
+            <div>
+              <h6>Pastor Timothy</h6>
+              <small>Oyo — NGO / Trustees Registration</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>"I had my doubts before, but Taiwo verified himself on video call and delivered everything promised. Best CAC agent I've worked with!"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar" style="background: linear-gradient(135deg, var(--orange), var(--blue))">E</div>
+            <div>
+              <h6>Esther I.</h6>
+              <small>Abuja — LLC Registration</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FAQ ========== -->
+<section id="faq">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="text-center mb-5 reveal">
+          <span class="section-eyebrow">FAQs</span>
+          <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
+          <div class="divider-line mx-auto"></div>
+        </div>
+        <div class="accordion reveal" id="faqAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                What is CAC and why does my business need it?
+              </button>
+            </h2>
+            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">CAC (Corporate Affairs Commission) is the Nigerian government agency responsible for registering and regulating companies and business names. Registration gives your business legal identity, brand protection, and access to banking, contracts, and investment opportunities.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                How long does registration take?
+              </button>
+            </h2>
+            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Business Name registration typically takes 3–5 working days. Company (LLC) or NGO registration may take 7–14 days depending on document readiness and CAC processing times.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                What documents do I need?
+              </button>
+            </h2>
+            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">For Business Name: full name, passport photo, business name ideas, and address. For Company/NGO: valid ID cards, passport photos, business objectives, and trustee/director details. We guide you through everything after sign-up.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                Can I register from any state in Nigeria?
+              </button>
+            </h2>
+            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Yes! Our service is 100% online and remote. You can register from any of the 36 states in Nigeria. We handle the entire process and send your certificate digitally via WhatsApp and email.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                How do I pay and is my payment secure?
+              </button>
+            </h2>
+            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Payments are processed securely via Paystack, Nigeria's leading payment gateway. All transactions are encrypted. You receive a receipt after every payment, and we never ask for cash transfers to personal accounts.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CTA BANNER ========== -->
+<section class="cta-section">
+  <div class="container text-center reveal">
+    <span class="section-eyebrow">Ready to Start?</span>
+    <h2 class="mt-2 mb-3">Your Business Deserves <span class="gradient-text">Legal Recognition</span></h2>
+    <p style="color:#888; max-width:500px; margin: 0 auto 32px; font-size:1rem; line-height:1.8">
+      Join 100+ registered businesses. Get started today — it takes less than 5 minutes to submit your details.
+    </p>
+    <div class="d-flex justify-content-center flex-wrap gap-3">
+      <a href="i.html" class="btn btn-primary-custom">
+        <i class="bi bi-rocket-takeoff-fill me-2"></i>Register My Business
+      </a>
+      <a href="https://wa.me/2348100783189" target="_blank" class="btn btn-secondary-custom">
+        <i class="bi bi-whatsapp me-2 text-success"></i>Chat on WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-4">
+        <div class="footer-brand">Tairac Digital Solution</div>
+        <p class="footer-desc">Nigeria's trusted CAC registration specialist. Fast, affordable, and 100% online. Serving individuals, businesses, churches, and NGOs across all 36 states.</p>
+        <div class="mt-3">
+          <a href="https://wa.me/2348100783189" class="social-btn" target="_blank"><i class="bi bi-whatsapp"></i></a>
+          <a href="#" class="social-btn"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="social-btn"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="social-btn"><i class="bi bi-twitter-x"></i></a>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-2">
+        <h6 class="footer-heading">Navigation</h6>
+        <a href="index.html" class="footer-link">Homepage</a>
+        <a href="about.html" class="footer-link">Meet the Founder</a>
+        <a href="partner.html" class="footer-link">Partner With Us</a>
+        <a href="why-trust.html" class="footer-link">Why Trust Us</a>
+        <a href="faqs.html" class="footer-link">FAQs</a>
+      </div>
+      <div class="col-sm-6 col-lg-2">
+        <h6 class="footer-heading">Services</h6>
+        <a href="i.html" class="footer-link">Business Name</a>
+        <a href="i.html" class="footer-link">LLC Registration</a>
+        <a href="i.html" class="footer-link">NGO & Trustees</a>
+        <a href="i.html" class="footer-link">Annual Returns</a>
+        <a href="i.html" class="footer-link">Name Search</a>
+      </div>
+      <div class="col-sm-6 col-lg-2">
+        <h6 class="footer-heading">Learn More</h6>
+        <a href="about-cac.html" class="footer-link">What is CAC?</a>
+        <a href="benefits.html" class="footer-link">Benefits of CAC</a>
+        <a href="login.html" class="footer-link">Log In</a>
+        <a href="signup.html" class="footer-link">Create Account</a>
+        <a href="dashboard.html" class="footer-link">Dashboard</a>
+      </div>
+      <div class="col-sm-6 col-lg-2">
+        <h6 class="footer-heading">Contact</h6>
+        <div class="footer-contact"><i class="bi bi-telephone-fill"></i> +234 810 078 3189</div>
+        <div class="footer-contact"><i class="bi bi-envelope-fill"></i> support@tairac.com</div>
+        <div class="footer-contact"><i class="bi bi-whatsapp"></i> WhatsApp Available</div>
+        <div class="footer-contact"><i class="bi bi-clock-fill"></i> Mon – Sat, 8am – 8pm</div>
+      </div>
+    </div>
+
+    <hr class="footer-divider"/>
+
+    <div class="footer-bottom">
+      <p>© 2025 Tairac Digital Solution. All rights reserved.</p>
+      <p>Designed for Nigerian entrepreneurs 🇳🇬</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  // Scroll reveal animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+ // Lock scroll when mobile nav is open
+const navMenu = document.getElementById('navMenu');
+navMenu.addEventListener('show.bs.collapse', () => {
+  document.body.style.overflow = 'hidden';
+  navMenu.style.overflowY = 'auto';
+  navMenu.style.maxHeight = '80vh';
+});
+navMenu.addEventListener('hide.bs.collapse', () => {
+  document.body.style.overflow = '';
+  navMenu.style.overflowY = '';
+  navMenu.style.maxHeight = '';
+});
+ 
+ 
+ 
+  // Navbar scroll effect
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('.navbar');
+    if (window.scrollY > 40) {
+      nav.style.background = 'rgba(13, 17, 23, 0.97)';
+      nav.style.boxShadow = '0 4px 30px rgba(0,0,0,0.4)';
+    } else {
+      nav.style.background = 'rgba(13, 17, 23, 0.85)';
+      nav.style.boxShadow = 'none';
+    }
+  });
+  
+  // Theme toggle
+function toggleTheme() {
+  const body = document.body;
+  const icon = document.getElementById('themeIcon');
+  body.classList.toggle('light-mode');
+
+  if (body.classList.contains('light-mode')) {
+    icon.className = 'bi bi-sun-fill';
+    localStorage.setItem('theme', 'light');
+  } else {
+    icon.className = 'bi bi-moon-fill';
+    localStorage.setItem('theme', 'dark');
+  }
+}
+
+// Remember user's preference on page load
+(function () {
+  if (localStorage.getItem('theme') === 'light') {
+    document.body.classList.add('light-mode');
+    const icon = document.getElementById('themeIcon');
+    if (icon) icon.className = 'bi bi-sun-fill';
+  }
+})();
+</script>
+
+</body>
+</html>
